@@ -1,11 +1,16 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
-export default function Form() {
+export default function Form({ onAddItem }) {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (!name) {
+      return; // stop function
+    }
 
     const newItem = {
       name: name,
@@ -13,6 +18,8 @@ export default function Form() {
       checked: false,
       id: Date.now(),
     };
+
+    onAddItem(newItem);
 
     console.log(newItem);
 
