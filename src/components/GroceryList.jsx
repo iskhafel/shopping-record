@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-export default function GroceryList({ data }) {
+export default function GroceryList({ items }) {
   return (
     <>
       <div className="list">
         <ul>
-          {data.map((item) => (
+          {items.map((item) => (
             <li key={item.id}>
               <input type="checkbox" />
               <span
