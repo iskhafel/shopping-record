@@ -7,7 +7,11 @@ export default function GroceryList({ data }) {
           {data.map((item) => (
             <li key={item.id}>
               <input type="checkbox" />
-              <span>
+              <span
+                style={{
+                  textDecoration: item.checked ? "line-through" : "none",
+                }}
+              >
                 {item.quantity} {item.name}
               </span>
               <button>&times;</button>
