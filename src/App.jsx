@@ -23,6 +23,12 @@ export default function App() {
       quantity: 3,
       checked: false,
     },
+    {
+      id: 4,
+      name: "Kopi Hitam",
+      quantity: 1,
+      checked: true,
+    },
   ];
 
   return (
