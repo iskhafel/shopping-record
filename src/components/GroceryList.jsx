@@ -1,12 +1,21 @@
 /* eslint-disable react/prop-types */
-export default function GroceryList({ items }) {
+export default function GroceryList({
+  items,
+  onDeleteItem,
+  onToggleItem,
+  onClearItems,
+}) {
   return (
     <>
       <div className="list">
         <ul>
           {items.map((item) => (
             <li key={item.id}>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                checked={item.checked}
+                onChange={() => onToggleItem(item.id)}
+              />
               <span
                 style={{
                   textDecoration: item.checked ? "line-through" : "none",
@@ -14,7 +23,7 @@ export default function GroceryList({ items }) {
               >
                 {item.quantity} {item.name}
               </span>
-              <button>&times;</button>
+              <button onClick={() => onDeleteItem(item.id)}>&times;</button>
             </li>
           ))}
         </ul>
@@ -25,7 +34,7 @@ export default function GroceryList({ items }) {
           <option value="name">Urutkan berdasarkan nama barang</option>
           <option value="checked">Urutkan berdasarkan ceklis</option>
         </select>
-        <button>Bersihkan Daftar</button>
+        <button onClick={onClearItems}>Bersihkan Daftar</button>
       </div>
     </>
   );
